@@ -3,10 +3,17 @@ sequenceDiagram
     participant browser
     participant server
 
+    Note right of browser: User submits form
+
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
+
+    Note right of server: The server adds the new note
+
     server-->>browser: HTTP status code 302 (URL redirect to https://studies.cs.helsinki.fi/exampleapp/notes)
     deactivate server
+
+    Note right of browser: The browser reloads notes page
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
