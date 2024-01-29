@@ -12,22 +12,27 @@ const Statistics = ({ good, neutral, bad }) => {
   const positivas = (good*100)/all
 
   if (all === 0) return <div> No feedback given </div>
-  
+
   return (
-    <div>
-      <StatisticLine text="good" value={good} />
-      <StatisticLine text="neutral" value={neutral} />
-      <StatisticLine text="bad" value={bad} />
-      <StatisticLine text="all" value={all} />
-      <StatisticLine text="average" value={promedio} />
-      <StatisticLine text="positive" value={positivas} />
-    </div>
+    <table>
+      <tbody>
+        <StatisticLine text="good" value={good} />
+        <StatisticLine text="neutral" value={neutral} />
+        <StatisticLine text="bad" value={bad} />
+        <StatisticLine text="all" value={all} />
+        <StatisticLine text="average" value={promedio} />
+        <StatisticLine text="positive" value={positivas} />
+      </tbody>
+    </table>
   )
 }
 
 const StatisticLine = (props) => {
   return (
-    <div> {props.text} {props.value} {props.text==="positive"?"%":""} </div>
+    <tr>
+      <td> {props.text} </td>
+      <td> {props.value} {props.text==="positive"?"%":""} </td>
+    </tr>
   )
 }
 
