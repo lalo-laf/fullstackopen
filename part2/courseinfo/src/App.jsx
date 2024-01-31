@@ -11,8 +11,9 @@ const Content = ({ parts }) =>
   </>
 
 const Total = ({ parts }) => {
-  let sum = 0
-  parts.map(part => part.exercises).forEach(exercises => sum += exercises)
+  // let sum = 0
+  // parts.forEach(part => sum += part.exercises)
+  const sum = parts.reduce((currentSum, part) => currentSum + part.exercises, 0)  //nueva opcion
   return (
     <p>Number of exercises {sum} </p>
   )
