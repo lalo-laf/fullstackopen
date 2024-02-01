@@ -6,14 +6,17 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
-    console.log("submit clickeado", event.target)    //para testing
-    const nameObject = { name: newName }
-    setPersons(persons.concat(nameObject))
-    setNewName('')
+
+    if (persons.every((elem) => elem.name !== newName)) {
+      const nameObject = { name: newName }
+      setPersons(persons.concat(nameObject))
+      setNewName('')
+    } else {
+      alert(`${newName} is already added to phonebook`)
+    }
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)   //para testing
     setNewName(event.target.value)
   }
 
