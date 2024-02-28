@@ -58,7 +58,8 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
-    if (window.confirm("borrar?")) {
+    const personObject = persons.find(p => p.id === id)
+    if (window.confirm(`Delete ${personObject.name}?`)) {
       personService
       .remove(id)
       .then(() => {
