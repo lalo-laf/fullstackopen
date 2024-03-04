@@ -1,9 +1,12 @@
-const Countries = () => {
-  //
+const Countries = ({ countries }) => {
   return (
-    <div>
-      <p>esto es el componente Countries</p>
-    </div>
+    <ul>
+      {countries.map(country => 
+        <li key={country.name.common}> 
+          {country.name.common} 
+        </li>
+      )}
+    </ul>
   )
 }
 
