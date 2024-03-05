@@ -28,7 +28,7 @@ const App = () => {
     setSearchFilter(event.target.value)
   }
 
-  const handleShowInfo = (country) => {
+  const handleShowButton = (country) => {
     setCountryToShow(country)
   }
 
@@ -38,7 +38,7 @@ const App = () => {
 
       <SearchField searchFilter={searchFilter} handleFilterChange={handleFilterChange} />
 
-      <Countries countries={countriesToShow} ready={ready} handleShowInfo={handleShowInfo} />
+      <Countries countries={countriesToShow} ready={ready} handleShowButton={handleShowButton} />
 
       <CountryInfo country={countryToShow} />
     </div>

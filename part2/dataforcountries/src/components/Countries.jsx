@@ -1,4 +1,4 @@
-const Countries = ({ countries, ready, handleShowInfo }) => {
+const Countries = ({ countries, ready, handleShowButton }) => {
   if (!ready) {
     return <div> Loading... </div>
   }
@@ -16,7 +16,7 @@ const Countries = ({ countries, ready, handleShowInfo }) => {
       {countries.map(country => 
         <li key={country.name.common}> 
           {country.name.common} 
-          <button onClick={() => handleShowInfo(country)} > show </button>
+          <button onClick={() => handleShowButton(country)} > show </button>
         </li>
       )}
     </ul>
