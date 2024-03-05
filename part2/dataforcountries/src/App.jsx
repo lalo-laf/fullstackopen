@@ -20,6 +20,10 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    if (countriesToShow.length == 1) setCountryToShow(countriesToShow[0])
+  }, [countriesToShow])
+
   const handleFilterChange = (event) => {
     setSearchFilter(event.target.value)
   }
