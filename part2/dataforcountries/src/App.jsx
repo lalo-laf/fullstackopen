@@ -8,9 +8,9 @@ const App = () => {
   const [countries, setCountries] = useState([])
   const [searchFilter, setSearchFilter] = useState("")
   const [ready, setReady] = useState(false)
+  const [countryToShow, setCountryToShow] = useState(null)
 
   const countriesToShow = countries.filter(country => country.name.common.toLowerCase().includes(searchFilter.toLowerCase()))
-  const showDetails = countriesToShow.length == 1 ? true : false
 
   useEffect(() => {
     axios.get('https://studies.cs.helsinki.fi/restcountries/api/all')
@@ -24,15 +24,19 @@ const App = () => {
     setSearchFilter(event.target.value)
   }
 
+  const handleShowInfo = (country) => {
+    setCountryToShow(country)
+  }
+
   return (
     <div>
       <h1>Data for countries</h1>
 
       <SearchField searchFilter={searchFilter} handleFilterChange={handleFilterChange} />
 
-      <Countries countries={countriesToShow} ready={ready} />
+      <Countries countries={countriesToShow} ready={ready} handleShowInfo={handleShowInfo} />
 
-      <CountryInfo showDetails={showDetails} country={countriesToShow[0]} />
+      <CountryInfo country={countryToShow} />
     </div>
   )
 }

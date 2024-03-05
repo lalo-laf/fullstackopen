@@ -1,5 +1,5 @@
-const CountryInfo = ({ showDetails, country }) => {
-  if (!showDetails) return null
+const CountryInfo = ({ country }) => {
+  if (country === null) return null
 
   return (
     <div>

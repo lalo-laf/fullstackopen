@@ -1,14 +1,10 @@
-const Countries = ({ countries, ready }) => {
+const Countries = ({ countries, ready, handleShowInfo }) => {
   if (!ready) {
     return <div> Loading... </div>
   }
 
   if (countries.length == 0) {
     return <div> No matches </div>
-  }
-
-  if (countries.length == 1) {
-    return null
   }
 
   if (countries.length > 10) {
@@ -20,6 +16,7 @@ const Countries = ({ countries, ready }) => {
       {countries.map(country => 
         <li key={country.name.common}> 
           {country.name.common} 
+          <button onClick={() => handleShowInfo(country)} > show </button>
         </li>
       )}
     </ul>
