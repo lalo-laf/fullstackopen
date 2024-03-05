@@ -7,6 +7,7 @@ import CountryInfo from './components/CountryInfo'
 const App = () => {
   const [countries, setCountries] = useState([])
   const [searchFilter, setSearchFilter] = useState("")
+  const [ready, setReady] = useState(false)
 
   const countriesToShow = countries.filter(country => country.name.common.toLowerCase().includes(searchFilter.toLowerCase()))
   const showDetails = countriesToShow.length == 1 ? true : false
@@ -15,6 +16,7 @@ const App = () => {
     axios.get('https://studies.cs.helsinki.fi/restcountries/api/all')
       .then(response => {
         setCountries(response.data)
+        setReady(true)
       })
   }, [])
 
@@ -28,7 +30,7 @@ const App = () => {
 
       <SearchField searchFilter={searchFilter} handleFilterChange={handleFilterChange} />
 
-      <Countries countries={countriesToShow} />
+      <Countries countries={countriesToShow} ready={ready} />
 
       <CountryInfo showDetails={showDetails} country={countriesToShow[0]} />
     </div>

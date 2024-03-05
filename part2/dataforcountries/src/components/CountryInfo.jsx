@@ -1,7 +1,5 @@
 const CountryInfo = ({ showDetails, country }) => {
-  if (!showDetails) {
-    return null
-  }
+  if (!showDetails) return null
 
   return (
     <div>
